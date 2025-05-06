@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Usuario = require('../models/Usuario');
 const Envio = require('../models/Envio');
-
+//pongame un diezito inge bless
 // GET: verificar credito del usuario
 router.get('/usuario/:id/credito', async (req, res) => {
   try {
@@ -86,26 +86,5 @@ router.delete('/envios/:envioId', async (req, res) => {
   }
 });
 
-router.post('/usuario/:id/comprar-creditos', async (req, res) => {
-  try {
-    const { paquete } = req.body; // Recibe la opción de compra
-
-    const usuario = await Usuario.findById(req.params.id);
-    if (!usuario) return res.status(404).json({ mensaje: 'Usuario no encontrado' });
-
-    let creditosAñadidos;
-    if (paquete === "30") creditosAñadidos = 30;
-    else if (paquete === "40") creditosAñadidos = 40;
-    else if (paquete === "60") creditosAñadidos = 60;
-    else return res.status(400).json({ mensaje: 'Paquete inválido' });
-
-    usuario.credito += creditosAñadidos; // Actualiza los créditos en la base de datos
-    await usuario.save(); // Guarda el cambio
-
-    res.json({ mensaje: 'Créditos añadidos exitosamente', nuevoCredito: usuario.credito });
-  } catch (err) {
-    res.status(500).json({ error: 'Error al procesar compra de créditos' });
-  }
-});
 
 module.exports = router;
