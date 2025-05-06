@@ -50,31 +50,6 @@ GET http://localhost:3000/api/usuario/u2025/credito
 
 ---
 
-### ✅ Comprar créditos para envíos  
-📌 `POST /api/usuario/:id/comprar-creditos`  
-🔹 Permite al usuario comprar créditos según paquetes predefinidos.
-
-**Ejemplo de uso:**
-```
-POST http://localhost:3000/api/usuario/u2025/comprar-creditos
-```
-
-**Cuerpo JSON:**
-```json
-{
-  "paquete": "40"
-}
-```
-
-**Respuesta esperada:**
-```json
-{
-  "mensaje": "Créditos añadidos exitosamente",
-  "nuevoCredito": 70
-}
-```
-
----
 
 ### ✅ Registrar un envío  
 📌 `POST /api/envios`  
